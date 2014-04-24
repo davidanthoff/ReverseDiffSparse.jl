@@ -7,6 +7,7 @@ ex = @processNLExpr sin(x[1])
 # genfgrad(ex) # examine symbolic function
 fg = genfgrad_simple(ex)
 
+exit(1)
 out = zeros(3)
 xvals = [1.1,2.2,3.3]
 fval = fg(xvals, out)

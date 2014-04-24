@@ -435,7 +435,10 @@ getindex(::IdentityArray,i) = i
 
 function genfgrad_simple(x::SymbolicOutput)
     fexpr = genfgrad(x)
+    println(fexpr)
     f = eval(fexpr)
+    println(code_typed(f, (Vector{Float64}, IdentityArray, Vector{Float64}, IdentityArray)))
+    #println(code_typed(f, (Vector{Float64}, Vector{Int}, Vector{Float64}, Vector{Int}))) # same type inference issue
     return (xvals, out) -> (fill!(out, 0.0); f(xvals, IdentityArray(), out, IdentityArray()))
 end
 
