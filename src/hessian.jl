@@ -176,6 +176,9 @@ function gen_hessian_matmat_parametric(s::SymbolicOutput)
     fgrad = genfgrad_parametric(s)
     # S uses canonical indices
     function hessian_matmat_p!{T}(S, x::Vector{T}, inputvals, fromcanonical, tocanonical)
+    println(typeof(inputvals))
+        println(code_typed(fgrad, (Vector{Dual{Float64}}, Dict{Int,Int}, Vector{Dual{Float64}}, Dict{Int,Int}, typeof(inputvals)) ))
+        exit(1)
         N = size(S,1)
         @assert length(x) >= N
         dualvec = Array(Dual{T}, N)

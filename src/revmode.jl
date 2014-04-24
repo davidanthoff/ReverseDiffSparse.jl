@@ -244,7 +244,8 @@ end
 forwardpass(x, expr_out) = :(forwardvalue($x, __placevalues, __placeindex_in))
 
 forwardvalue(x::Placeholder, placevalues, placeindex_in) = placevalues[placeindex_in[getindex(x)]]
-forwardvalue(x, placevalues, placeindex_in) = float(x)
+#forwardvalue(x, placevalues, placeindex_in) = float(x)
+forwardvalue(x, placevalues, placeindex_in) = x
 
 function revpass(x::ExprNode, expr_out)
     @assert isexpr(expr_out, :block)
